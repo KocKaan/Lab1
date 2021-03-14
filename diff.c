@@ -1,28 +1,44 @@
+//You may assume that str points to a legal C string. For this problem the only
+//vowels are ’a’, ’A’, ’e’, ’E’, ’i’, ’I’, ’o’, ’O’, ’u’, and ’U’. The int
+//returned by countVowels() is the total number of vowels found in the string
+//(pointed to by) str. In addition, countVowels() modifies str, specifically it
+// removes every vowel.Example: if originally str ="abc3U@", countVowels(str)
+//returns 2 and, after the call, str="bc3@".
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<strings.h>
+int countVowels(char *str);
 
-#define MAX 2048
+int main(){
+    char str[50];
 
-struct diff {
-    int col;
-    int row;
-    char line1[MAX];
-    char line2[MAX];
-};
+    printf("Enter a String: ");
+    gets(str);
+    int result= countVowels(str);
+    printf("The amout of vowels in the string was: %d \n",result );
 
-struct diff* save_diff(int c, int r, char l1[MAX], char l2[MAX]) {
-    struct diff *node = (struct diff*) malloc(sizeof(struct diff));
-    node->col = c;
-    node->row = r;
-    strcpy(node->line1,l1);
-    strcpy(node->line2,l2);
-    return node;
-}
+    printf("The originial string without vowels: %s \n",str );
 
-void print_diff(struct diff *node) {
-    printf("r%dc%d\n",node->row+1,node->col+1);
-    printf("< %s",node->line1);
-    printf("---\n");
-    printf("> %s",node->line2);
-}
+
+  }
+  int countVowels(char *str){
+    int i=0, j;
+    int counter=0;
+
+    while(str[i]!='\0'){
+
+        if(str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'||str[i]=='A'||str[i]=='E'||str[i]=='I'||str[i]=='O'||str[i]=='U'){
+            counter++;
+            j=i;
+            while(str[j-1]!='\0'||j==0){
+                str[j] = str[j+1];
+                j++;
+            }
+
+        }else{
+          i++;
+        }
+    }
+    return counter;
+  }

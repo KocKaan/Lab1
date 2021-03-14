@@ -8,10 +8,14 @@
 
 #include<stdio.h>
 #include <string.h>
+
+
+#include<stdio.h>
+#include <string.h>
 int countVowels(char *str);
 
 int main() {
-  char str[]= "ka";
+  char str[]= "kaan";
   int counter= countVowels(str);
 
   printf("The counter is: %d \n",counter);
@@ -33,5 +37,4 @@ for(int i=0; i<len; i++){
 }
 printf("The string is: %s\n", str);
 return counter;
-
 }
