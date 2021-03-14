@@ -9,23 +9,22 @@ int reorder(char **s1, char **s2, char **s3);
 void swap(char **s1,char **s2);
 
 int main() {
-  char **slot1;
-  char **slot2;
-  char **slot3;
-
+  char **arrayHolder1;
+  char **arrayHolder2;
+  char **arrayHolder3;
   char *str1 = "aksodda";
   char *str2 = "wwdakapowfjoakef";
   char *str3 = "kaan";
 
-  slot1 = &str1;
-  slot2 = &str2;
-  slot3 = &str3;
-  reorder(slot1,slot2,slot3);
+  arrayHolder1 = &str1;
+  arrayHolder2 = &str2;
+  arrayHolder3 = &str3;
+  reorder(arrayHolder1,arrayHolder2,arrayHolder3);
 
   printf("\nAFTER:\n");
-  printf("\t*slot1 = \"%s\"\n", *slot1);
-  printf("\t*slot2 = \"%s\"\n", *slot2);
-  printf("\t*slot3 = \"%s\"\n", *slot3);
+  printf("\t*s1 = \"%s\"\n", *arrayHolder1);
+  printf("\t*s2 = \"%s\"\n", *arrayHolder2);
+  printf("\t*s3 = \"%s\"\n", *arrayHolder3);
 
 
 }
