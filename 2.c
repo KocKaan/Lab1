@@ -1,40 +1,77 @@
-
-//You may assume that str points to a legal C string. For this problem the only
-//vowels are ’a’, ’A’, ’e’, ’E’, ’i’, ’I’, ’o’, ’O’, ’u’, and ’U’. The int
-//returned by countVowels() is the total number of vowels found in the string
-//(pointed to by) str. In addition, countVowels() modifies str, specifically it
-// removes every vowel.Example: if originally str ="abc3U@", countVowels(str)
-//returns 2 and, after the call, str="bc3@".
-
-#include<stdio.h>
-#include <string.h>
+// Ordering Strings by Length
 
 
 #include<stdio.h>
 #include <string.h>
-int countVowels(char *str);
+
+
+int reorder(char **s1, char **s2, char **s3);
+void swap(char **s1,char **s2);
 
 int main() {
-  char str[]= "kaan";
-  int counter= countVowels(str);
+  char **slot1;
+  char **slot2;
+  char **slot3;
 
-  printf("The counter is: %d \n",counter);
+  char *str1 = "aksodda";
+  char *str2 = "wwdakapowfjoakef";
+  char *str3 = "kaan";
+
+  slot1 = &str1;
+  slot2 = &str2;
+  slot3 = &str3;
+  reorder(slot1,slot2,slot3);
+
+  printf("\nAFTER:\n");
+  printf("\t*slot1 = \"%s\"\n", *slot1);
+  printf("\t*slot2 = \"%s\"\n", *slot2);
+  printf("\t*slot3 = \"%s\"\n", *slot3);
+
+
 }
+int reorder(char **s1, char **s2, char **s3){
+  int leng1= strlen(*s1);
+  int leng2= strlen(*s2);
+  int leng3= strlen(*s3);
 
-int countVowels(char *str){
-int counter=0;
-int len= strlen(str);
-
-
-for(int i=0; i<len; i++){
-  if(str[i]!='a'||str[i]!='e'||str[i]!='i'||str[i]!='o'||str[i]!='u'||str[i]!='A'||str[i]!='E'||str[i]!='I'||str[i]!='O'||str[i]!='U'){
-    counter++;
-    for(int j=i; j<len;j++){
-      str[j]=str[j+1];
-    }
-    len--;
+  if(leng1==leng2&&leng2==leng3){
+    printf("They are same length\n" );
+    return 3;
+  } else if (leng1 == leng2 || leng1 == leng3 || leng2 == leng3){
+      printf("Two are equal in length.\n");
+      return 2;
+  } else {
+      //short 1
+      if(leng1 <= leng2 && leng1 <= leng3){
+          swap(s1,s3);
+          if(leng3 <= leng2){
+              swap(s1, s2);
+          }
+      }
+      //short 2
+      else if(leng2 <= leng1 && leng2 <= leng3){
+          swap(s2, s3);
+          // if 3 is shorter than 1
+          if(leng1 <= leng3){
+              swap(s1, s2);
+          }
+      }
+      //short 3
+      else if(leng3 <= leng2 && leng3 <= leng1){
+          if(leng1 <= leng2){
+              swap(s1, s2);
+          }
+      } else {
+          return 0;
+      }
+      printf("All three are unequal in length.\n");
+      return 1;
   }
 }
-printf("The string is: %s\n", str);
-return counter;
+
+void swap(char **s1,char **s2){
+
+  char *temp= *s1;
+  *s1=*s2;
+  *s2= temp;
 }

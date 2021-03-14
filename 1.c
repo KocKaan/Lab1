@@ -35,7 +35,6 @@ int main(){
                 str[j] = str[j+1];
                 j++;
             }
-
         }else{
           i++;
         }
