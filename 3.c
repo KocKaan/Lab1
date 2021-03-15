@@ -16,25 +16,34 @@ int main (int argc, char *argv[argc]) {
       putchar(C);
     }
   }
-  if(argc==2&&strcmp(argv[1], "-d") != 0){
+  //0 means same
+  if(argc==2&&(strcmp(argv[1], "-d") == 0)){
+      printf("duplicate\n" );
     while((C=getchar()) !=EOF){
       putchar(C);
       putchar(C);
     }
   }
 
-  if(argc==2&& strcmp(argv[1], "-u") != 0){
+  if(argc==2&& (strcmp(argv[1], "-u") == 0)){
+    printf("uppercase\n" );
     while((C=getchar()) !=EOF){
       if(!isdigit(C)){
         C=toupper(C);
         putchar(C);
+      }else{
+        putchar(C);
       }
     }
   }
-  if(argc==3 &&((strcmp(argv[1], "-u") != 0&&strcmp(argv[2], "-d") != 0))||(strcmp(argv[1], "-d") != 0&&strcmp(argv[2], "-u") != 0) ){
+  if(argc==2 &&((strcmp(argv[1], "-ud")==0)||(strcmp(argv[1], "-du")==0)||(strcmp(argv[1], "-u -d")==0)||(strcmp(argv[1], "-d -u")==0)) ) {
+      printf("uppercase and duplicate \n" );
     while((C=getchar()) !=EOF){
       if(!isdigit(C)){
         C=toupper(C);
+        putchar(C);
+        putchar(C);
+      }else{
         putchar(C);
         putchar(C);
       }

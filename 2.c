@@ -21,7 +21,6 @@ int main() {
   arrayHolder3 = &str3;
   reorder(arrayHolder1,arrayHolder2,arrayHolder3);
 
-  printf("\nAFTER:\n");
   printf("\t*s1 = \"%s\"\n", *arrayHolder1);
   printf("\t*s2 = \"%s\"\n", *arrayHolder2);
   printf("\t*s3 = \"%s\"\n", *arrayHolder3);
